@@ -44,21 +44,20 @@ function displayMedicines(medicineData) {
   
     table.appendChild(tbody);
     main.appendChild(table);
-  }
+}
 
-  //fetch medicine date and render them
-  function fetchMedicines(){
+//fetch medicine data and render them
+function fetchMedicines(){
     fetch("http://127.0.0.1:8000/medicines")
     .then((response) => response.json())
     .then((data) => {
         displayMedicines(data.medicines);
     })
     .catch((error) => console.error("Error fetching medicine data:", error));
-  }
+}
   
-  //handle form submission and add a new medicine
-
-  function setupFormListener(){
+//handle form submission and add a new medicine
+function setupFormListener(){
     const form = document.getElementById("medicine-form");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -103,10 +102,9 @@ function displayMedicines(medicineData) {
         })
         .catch((error) => console.error("Error fetching medicine data:", error));
     })
-  }
+}
 
-
-  window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("DOMContentLoaded", () => {
     fetchMedicines();
     setupFormListener();
-  });
+});
